@@ -4,15 +4,12 @@ import streamlit as st
 @st.cache_data
 def load_data():
     df = pd.read_csv("data/diamonds.csv")
-    #st.write("Dataset columns:", df.columns.tolist())
     st.write("Dataset preview:", df.head())
 
 
 
     # Remove optional index column
-    df = df.loc[
-        :, ~df.columns.str.startswith("Unnamed:")
-    ]
+    df = df.loc[:, ~df.columns.str.startswith("Unnamed:")]
 
     # Remove duplicate records
     # df = df.drop_duplicates()
